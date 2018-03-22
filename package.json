@@ -1,0 +1,23 @@
+{
+  "name": "readable",
+  "version": "1.0.0",
+  "description": "A React web-app for members who want add content for community discussion. (Udacity React ND)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./api-server/server.js",
+    "watch": "nodemon ./api-server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riley-rangel/readable.git"
+  },
+  "author": "riley-rangel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riley-rangel/readable/issues"
+  },
+  "homepage": "https://github.com/riley-rangel/readable#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  }
+}
