@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 .idea
+.env
+*.log
+api-server/public/main.js

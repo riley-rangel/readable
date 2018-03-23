@@ -1,0 +1,9 @@
+.btn-font {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .btn-margin {
+        margin: 0 0.25rem;
+    }
+}

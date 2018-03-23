@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path')
 const cors = require('cors')
 const config = require('./config')
 const categories = require('./categories')
@@ -10,11 +11,11 @@ const comments = require('./comments')
 
 const app = express()
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(cors())
 
 
-app.get('/', (req, res) => {
+app.get('/help', (req, res) => {
   const help = `
   <pre>
     Welcome to the Udacity Readable API!
