@@ -37,6 +37,8 @@
   "dependencies": {
     "dotenv": "^5.0.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-icons": "^2.2.7",
+    "react-modal": "^3.3.2"
   }
 }
