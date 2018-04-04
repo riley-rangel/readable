@@ -33,6 +33,12 @@ const CreatePost = ({ categories = [] }) => {
             </div>
             <div className='row'>
               <div className='twelve-col'>
+                <p className='heading'>Add an Author</p>
+                <input type='text' name='author' placeholder='Author' />
+              </div>
+            </div>
+            <div className='row'>
+              <div className='twelve-col'>
                 <p className='heading'>Write the Post</p>
                 <textarea className='content' type='text' name='content' placeholder='Content' />
               </div>
