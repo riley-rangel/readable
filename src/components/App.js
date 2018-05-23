@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
-import { Grid, Typography, withStyles } from '@material-ui/core'
+import { Button, Grid, Typography, withStyles } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import * as API from '../API'
 import { ActionButton, Category, CreatePost, Navbar } from './'
@@ -24,7 +24,7 @@ class App extends Component {
   openAddPostModal = () => this.setState({ addPostModalOpen: true })
   closeAddPostModal = () => this.setState({ addPostModalOpen: false })
   render() {
-    const { classes: { categoryBox, pad, row } } = this.props
+    const { classes: { categoryBox, modalBtn, pad, row } } = this.props
 
     return (
       <MuiThemeProvider theme={theme}>
@@ -41,11 +41,13 @@ class App extends Component {
             </Grid>
           </div>
         </div>
-        <ActionButton
-          action={this.openAddPostModal}
-          position={{bottom: '25px', right: '25px'}}
-          icon={<MdAdd size={30} />}
-        />
+        <Button
+          variant="fab"
+          color="secondary"
+          onClick={this.openAddPostModal}
+          className={modalBtn}>
+          <MdAdd />
+        </Button>
         <Modal
           isOpen={this.state.addPostModalOpen}
           onRequestClose={this.closeAddPostModal}
@@ -63,6 +65,11 @@ const styles = ({ spacing: { unit } }) => ({
     padding: unit,
     backgroundColor: 'rgba(0, 0, 0, 0.06)',
     borderRadius: 10,
+  },
+  modalBtn: {
+    position: 'absolute',
+    bottom: unit * 3,
+    right: unit * 3,
   },
   pad: { padding: unit * 3 },
   row: { paddingTop: unit },
