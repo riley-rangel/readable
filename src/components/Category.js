@@ -1,15 +1,26 @@
 import React from 'react'
+import { Button, withStyles } from '@material-ui/core'
 import { capitalize } from '../helpers'
-import './Category.css'
 
-const Category = ({ name }) => {
+const Category = ({ classes: { category, categoryBtn }, name }) => {
   return (
-    <div className='float-lt btn-margin'>
-      <button disabled className='pill btn btn-primary btn-font'>
+    <div className={category}>
+      <Button variant="outlined" color="primary" className={categoryBtn}>
         {capitalize(name)}
-      </button>
+      </Button>
     </div>
   )
 }
 
-export default Category
+const styles = ({  palette: { primary }, spacing: { unit }, }) => ({
+  category: {
+    margin: unit,
+    float: 'left',
+  },
+  categoryBtn: {
+    borderColor: primary.main,
+    backgroundColor: 'rgba(255, 255, 255, 0.33)',
+  },
+})
+
+export default withStyles(styles)(Category)
