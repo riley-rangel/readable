@@ -1,5 +1,5 @@
 import React from 'react'
-import { isObject } from '../../helpers'
+import { isObject } from '../helpers'
 import './ActionButton.css'
 
 const isValidCSS = obj => {

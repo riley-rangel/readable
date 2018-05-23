@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
+import { Grid, Typography, withStyles } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import * as API from '../API'
 import ActionButton from './ActionButton'
 import Category from './Category'
@@ -7,7 +9,9 @@ import CreatePost from './CreatePost'
 import Navbar from './Navbar'
 import MdAdd from 'react-icons/lib/md/add'
 
-export default class App extends Component {
+const theme = createMuiTheme()
+
+class App extends Component {
   state = {
     categories: [],
     addPostModalOpen: false
@@ -23,16 +27,21 @@ export default class App extends Component {
   openAddPostModal = () => this.setState({ addPostModalOpen: true })
   closeAddPostModal = () => this.setState({ addPostModalOpen: false })
   render() {
+    const { classes: { categoryBox, pad, row } } = this.props
+
     return (
-      <div>
-        <Navbar title={'Readable'} subtitle={'Share. Read. Comment.'} />
-        <div className='container no-pad'>
-          <div className='row'>
-            <div className='twelve-col flex'>
-              {this.state.categories.map(category => (
-                <Category key={category.path} name={category.name} />
+      <MuiThemeProvider theme={theme}>
+        <Navbar title="Readable" />
+        <div className={pad}>
+          <div className={categoryBox}>
+            <Grid container justify="center" className={row}>
+              <Typography variant="title">Categories</Typography>
+            </Grid>
+            <Grid container justify="center" className={row}>
+              {this.state.categories.map(({ name }) => (
+                <Category key={name} name={name} />
               ))}
-            </div>
+            </Grid>
           </div>
         </div>
         <ActionButton
@@ -47,7 +56,19 @@ export default class App extends Component {
           {this.state.addPostModalOpen &&
             <CreatePost categories={this.state.categories} />}
         </Modal>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }
+
+const styles = ({ spacing: { unit } }) => ({
+  categoryBox: {
+    padding: unit,
+    backgroundColor: 'rgba(0, 0, 0, 0.06)',
+    borderRadius: 10,
+  },
+  pad: { padding: unit * 3 },
+  row: { paddingTop: unit },
+})
+
+export default withStyles(styles)(App)

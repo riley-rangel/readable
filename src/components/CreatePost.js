@@ -1,5 +1,5 @@
 import React from 'react'
-import { capitalize } from '../../helpers'
+import { capitalize } from '../helpers'
 import './CreatePost.css'
 
 const CreatePost = ({ categories = [] }) => {
