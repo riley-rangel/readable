@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { Grid, withStyles } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import * as API from '../API'
 import Category from './Category'
 import Navbar from './Navbar'
+
+const theme = createMuiTheme()
 
 class App extends Component {
   state = {
@@ -17,7 +20,7 @@ class App extends Component {
     const { classes: { wrap } } = this.props
 
     return (
-      <div>
+      <MuiThemeProvider theme={theme}>
         <Navbar title="Readable" />
         <Grid container className={wrap}>
           <Grid item xs={12}>
@@ -26,7 +29,7 @@ class App extends Component {
             ))}
           </Grid>
         </Grid>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }
