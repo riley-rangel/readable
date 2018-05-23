@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Divider, Grid, Typography, withStyles } from '@material-ui/core'
+import { Grid, Typography, withStyles } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import * as API from '../API'
 import Category from './Category'
