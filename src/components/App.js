@@ -3,10 +3,7 @@ import Modal from 'react-modal'
 import { Grid, Typography, withStyles } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import * as API from '../API'
-import ActionButton from './ActionButton'
-import Category from './Category'
-import CreatePost from './CreatePost'
-import Navbar from './Navbar'
+import { ActionButton, Category, CreatePost, Navbar } from './'
 import MdAdd from 'react-icons/lib/md/add'
 
 const theme = createMuiTheme()
