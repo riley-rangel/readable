@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { Grid, withStyles } from '@material-ui/core'
 import * as API from '../API'
 import Category from './Category'
 import Navbar from './Navbar'
 
-export default class App extends Component {
+class App extends Component {
   state = {
     categories: []
   }
@@ -13,19 +14,25 @@ export default class App extends Component {
     this.setState({ categories })
   }
   render() {
+    const { classes: { wrap } } = this.props
+
     return (
       <div>
-        <Navbar title={'Readable'} subtitle={'Share. Read. Comment.'} />
-        <div className='container no-pad'>
-          <div className='row'>
-            <div className='twelve-col flex'>
-              {this.state.categories.map((category, i) => (
-                <Category key={i} name={category.name} />
-              ))}
-            </div>
-          </div>
-        </div>
+        <Navbar title="Readable" />
+        <Grid container className={wrap}>
+          <Grid item xs={12}>
+            {this.state.categories.map(({ name }) => (
+              <Category key={name} name={name} />
+            ))}
+          </Grid>
+        </Grid>
       </div>
     )
   }
 }
+
+const styles = ({ spacing: { unit } }) => ({
+  wrap: { margin: unit * 3 }
+})
+
+export default withStyles(styles)(App)
