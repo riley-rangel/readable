@@ -9,27 +9,3 @@ body {
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
-
-/* General Helpers */
-
-.float-lt {
-  float: left;
-}
-
-.y-ctr {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.flex {
-  display: flex !important;
-}
-
-.flex-auto {
-  flex: auto;
-}
-
-.no-pad {
-  padding: 0 !important;
-}
