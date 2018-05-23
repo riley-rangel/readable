@@ -19,6 +19,7 @@ const styles = ({  palette: { primary }, spacing: { unit }, }) => ({
   },
   categoryBtn: {
     borderColor: primary.main,
+    backgroundColor: 'rgba(255, 255, 255, 0.33)',
   },
 })
 

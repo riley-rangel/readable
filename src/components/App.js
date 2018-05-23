@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, withStyles } from '@material-ui/core'
+import { Divider, Grid, Typography, withStyles } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import * as API from '../API'
 import Category from './Category'
@@ -17,25 +17,36 @@ class App extends Component {
     this.setState({ categories })
   }
   render() {
-    const { classes: { wrap } } = this.props
+    const { classes: { categoryBox, pad, row } } = this.props
 
     return (
       <MuiThemeProvider theme={theme}>
         <Navbar title="Readable" />
-        <Grid container className={wrap}>
-          <Grid item xs={12}>
-            {this.state.categories.map(({ name }) => (
-              <Category key={name} name={name} />
-            ))}
-          </Grid>
-        </Grid>
+        <div className={pad}>
+          <div className={categoryBox}>
+            <Grid container justify="center" className={row}>
+              <Typography variant="title">Categories</Typography>
+            </Grid>
+            <Grid container justify="center" className={row}>
+              {this.state.categories.map(({ name }) => (
+                <Category key={name} name={name} />
+              ))}
+            </Grid>
+          </div>
+        </div>
       </MuiThemeProvider>
     )
   }
 }
 
 const styles = ({ spacing: { unit } }) => ({
-  wrap: { margin: unit * 3 }
+  categoryBox: {
+    padding: unit,
+    backgroundColor: 'rgba(0, 0, 0, 0.06)',
+    borderRadius: 10,
+  },
+  pad: { padding: unit * 3 },
+  row: { paddingTop: unit },
 })
 
 export default withStyles(styles)(App)
