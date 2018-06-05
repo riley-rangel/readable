@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 import { GET_CATEGORIES_FAILURE, GET_CATEGORIES_SUCCESS } from './constants'
 import initialState from './initialState'
 
@@ -19,4 +20,5 @@ function reducer(state = initialState, action) {
 
 export default combineReducers({
   app: reducer,
+  form: formReducer,
 })
