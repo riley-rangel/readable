@@ -1,9 +1,25 @@
 
 const BASE_URL = 'http://localhost:3001'
-const headers = { headers: { 'Authorization': 'whatever-you-want' }}
+const headers = { 'Authorization': 'whatever-you-want' }
 
 export const getCategories = async () => {
-  const res = await fetch(`${BASE_URL}/categories`, headers)
-  const data = await res.json()
-  return data.categories
+  const res = await fetch(`${BASE_URL}/categories`, { headers })
+  const { categories } = await res.json()
+
+  return categories
+}
+
+export const savePost = async (post) => {
+  const options = {
+    body: post,
+    headers: {
+      'Content-Type': 'application/json',
+      ...headers,
+    },
+    method: 'POST',
+  }
+  const res = await fetch(`${BASE_URL}/posts`, options)
+  const saved = await res.json()
+
+  return saved
 }
