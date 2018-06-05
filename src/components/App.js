@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { Button, Grid, Typography, withStyles } from '@material-ui/core'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import * as API from '../API'
-import { ActionButton, Category, CreatePost, Navbar } from './'
+import { Category, CreatePost, Navbar } from './'
+import { getCategories } from '../actions'
 import MdAdd from 'react-icons/lib/md/add'
-
-const theme = createMuiTheme()
 
 class App extends Component {
   state = {
-    categories: [],
     addPostModalOpen: false
   }
 
@@ -18,16 +16,19 @@ class App extends Component {
     Modal.setAppElement('body')
   }
   async componentDidMount() {
-    const categories = await API.getCategories()
-    this.setState({ categories })
+    const { dispatch } = this.props
+    dispatch(getCategories())
   }
   openAddPostModal = () => this.setState({ addPostModalOpen: true })
   closeAddPostModal = () => this.setState({ addPostModalOpen: false })
   render() {
-    const { classes: { categoryBox, modalBtn, pad, row } } = this.props
+    const {
+      categories = [],
+      classes: { categoryBox, modalBtn, pad, row }
+    } = this.props
 
     return (
-      <MuiThemeProvider theme={theme}>
+      <div>
         <Navbar title="Readable" />
         <div className={pad}>
           <div className={categoryBox}>
@@ -35,7 +36,7 @@ class App extends Component {
               <Typography variant="title">Categories</Typography>
             </Grid>
             <Grid container justify="center" className={row}>
-              {this.state.categories.map(({ name }) => (
+              {categories.map(({ name }) => (
                 <Category key={name} name={name} />
               ))}
             </Grid>
@@ -55,10 +56,14 @@ class App extends Component {
           {this.state.addPostModalOpen &&
             <CreatePost categories={this.state.categories} />}
         </Modal>
-      </MuiThemeProvider>
+      </div>
     )
   }
 }
+
+const mapStateToProps = ({ app }) => ({
+  categories: app.categories,
+})
 
 const styles = ({ spacing: { unit } }) => ({
   categoryBox: {
@@ -75,4 +80,6 @@ const styles = ({ spacing: { unit } }) => ({
   row: { paddingTop: unit },
 })
 
-export default withStyles(styles)(App)
+const enhanceComponent = compose(connect(mapStateToProps), withStyles(styles))
+
+export default enhanceComponent(App)
