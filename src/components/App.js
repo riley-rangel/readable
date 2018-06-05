@@ -54,7 +54,7 @@ class App extends Component {
           onRequestClose={this.closeAddPostModal}
         >
           {this.state.addPostModalOpen &&
-            <CreatePost categories={this.state.categories} />}
+            <CreatePost categories={categories} />}
         </Modal>
       </div>
     )
