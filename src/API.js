@@ -11,7 +11,7 @@ export const getCategories = async () => {
 
 export const savePost = async (post) => {
   const options = {
-    body: post,
+    body: JSON.stringify(post),
     headers: {
       'Content-Type': 'application/json',
       ...headers,
