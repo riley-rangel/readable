@@ -17,8 +17,9 @@ const PostForm = ({
   categories = [],
   classes: { flexCenter, input, margin, row, section },
   handleSubmit,
+  reset,
 }) => (
-  <form noValidate onSubmit={handleSubmit}>
+  <form autoComplete="off" noValidate onSubmit={handleSubmit}>
     <Grid container justify="center" className={row}>
       <Grid item md={4} xs={12} className={flexCenter}>
         <Field
@@ -65,9 +66,10 @@ const PostForm = ({
     </Grid>
     <Grid container justify="center" className={section}>
       <Button
-        variant="raised"
+        className={margin}
         color="secondary"
-        className={margin}>
+        onClick={reset}
+        variant="raised">
           Clear
       </Button>
       <Button
