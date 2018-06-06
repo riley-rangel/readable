@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Button, Grid, MenuItem, withStyles } from '@material-ui/core'
 import { SelectField, TextInput } from './'
+import { POST_FORM } from '../constants'
 import { capitalize } from '../helpers'
 
 const CategoryOption = ({name, path}) => (
@@ -109,7 +110,7 @@ const mapStateToProps = ({ app: { categories } }) => ({
 const enhanceComponent = compose(
   withStyles(styles),
   connect(mapStateToProps),
-  reduxForm({form: 'post'}),
+  reduxForm({form: POST_FORM}),
 )
 
 export default enhanceComponent(PostForm)
