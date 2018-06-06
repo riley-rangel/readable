@@ -59,7 +59,7 @@ const PostForm = ({
           fullWidth={true}
           label="Write the Post"
           multiline={true}
-          name="content"
+          name="body"
           placeholder="You may have heard..."
           type="text"
         />

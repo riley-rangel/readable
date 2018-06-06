@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Button, Grid, Typography, withStyles } from '@material-ui/core'
 import { Category, CreatePost, Navbar } from './'
-import { getCategories } from '../actions'
+import { getCategories, savePost } from '../actions'
 import MdAdd from 'react-icons/lib/md/add'
 
 class App extends Component {
@@ -21,6 +21,10 @@ class App extends Component {
   }
   openAddPostModal = () => this.setState({ addPostModalOpen: true })
   closeAddPostModal = () => this.setState({ addPostModalOpen: false })
+  savePost = post => {
+    this.closeAddPostModal()
+    this.props.dispatch(savePost(post))
+  }
   render() {
     const {
       categories = [],
@@ -54,7 +58,7 @@ class App extends Component {
           onRequestClose={this.closeAddPostModal}
         >
           {this.state.addPostModalOpen &&
-            <CreatePost categories={categories} />}
+            <CreatePost categories={categories} onSubmit={this.savePost} />}
         </Modal>
       </div>
     )

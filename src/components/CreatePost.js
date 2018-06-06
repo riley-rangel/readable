@@ -4,6 +4,7 @@ import { PostForm } from './'
 
 const CreatePost = ({
   classes: { row },
+  onSubmit,
 }) => (
   <Grid container justify="center">
     <Grid item md={8} sm={10} xs={12}>
@@ -15,7 +16,7 @@ const CreatePost = ({
           Submit a new post below for all Readable users!
         </Typography>
       </Grid>
-      <PostForm onSubmit={() => console.log('form submitted!')} />
+      <PostForm onSubmit={onSubmit} />
     </Grid>
   </Grid>
 )
